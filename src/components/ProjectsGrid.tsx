@@ -8,13 +8,13 @@ interface ProjectsGridProps {
 }
 
 export default function ProjectsGrid({ theme }: ProjectsGridProps) {
-  const [activeCategory, setActiveCategory] = useState<'All' | 'Full-Stack' | 'AI/ML'>('All');
+  const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories: ('All' | 'Full-Stack' | 'AI/ML')[] = ['All', 'Full-Stack', 'AI/ML'];
+  const categories = ['All', 'AI', 'Full-Stack Web Development', 'Web3 & Blockchain Engineering'];
 
   const filteredProjects = PROJECTS.filter((project) => {
     if (activeCategory === 'All') return true;
-    return project.category === activeCategory;
+    return project.categories.includes(activeCategory);
   });
 
   const cardVariants = {
@@ -140,15 +140,21 @@ export default function ProjectsGrid({ theme }: ProjectsGridProps) {
                     <div className="flex-1 relative flex items-center justify-center overflow-hidden">
                       {/* Grid background matching project style */}
                       <div className={`absolute inset-0 opacity-10 transition-colors duration-300 ${
-                        project.category === 'Full-Stack' ? 'bg-indigo-500' : 'bg-emerald-500'
+                        project.categories.includes('Web3 & Blockchain Engineering')
+                          ? 'bg-purple-500'
+                          : project.categories.includes('Full-Stack Web Development')
+                            ? 'bg-indigo-500'
+                            : 'bg-emerald-500'
                       }`} />
 
                       {/* Mock Visual Artwork Centered */}
                       <div className="text-center p-4 z-10 flex flex-col items-center gap-1.5">
                         <div className={`p-2.5 rounded-full transition-colors ${
-                          project.category === 'Full-Stack'
-                            ? theme === 'dark' ? 'bg-indigo-500/10 text-indigo-400' : 'bg-indigo-50 text-indigo-600'
-                            : theme === 'dark' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-50 text-emerald-600'
+                          project.categories.includes('Web3 & Blockchain Engineering')
+                            ? theme === 'dark' ? 'bg-purple-500/10 text-purple-400' : 'bg-purple-50 text-purple-600'
+                            : project.categories.includes('Full-Stack Web Development')
+                              ? theme === 'dark' ? 'bg-indigo-500/10 text-indigo-400' : 'bg-indigo-50 text-indigo-600'
+                              : theme === 'dark' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-50 text-emerald-600'
                         }`}>
                           {project.id === 'guardianlink' && <Map className="w-5 h-5" />}
                           {project.id === 'navx' && <Compass className="w-5 h-5" />}
@@ -175,18 +181,29 @@ export default function ProjectsGrid({ theme }: ProjectsGridProps) {
                   </div>
 
                   {/* Category and Tech indicators */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`px-2.5 py-1 rounded text-xs font-semibold font-mono border ${
-                      project.category === 'Full-Stack'
-                        ? theme === 'dark'
-                          ? 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20'
-                          : 'bg-indigo-50 text-indigo-600 border-indigo-200'
-                        : theme === 'dark'
-                          ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
-                          : 'bg-emerald-50 text-emerald-600 border-emerald-200'
-                    }`}>
-                      {project.category}
-                    </span>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.categories.map((cat) => (
+                        <span
+                          key={cat}
+                          className={`px-2 py-0.5 rounded text-[10px] font-semibold font-mono border ${
+                            cat === 'AI'
+                              ? theme === 'dark'
+                                ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
+                                : 'bg-emerald-50 text-emerald-600 border-emerald-200'
+                              : cat === 'Full-Stack Web Development'
+                                ? theme === 'dark'
+                                  ? 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20'
+                                  : 'bg-indigo-50 text-indigo-600 border-indigo-200'
+                                : theme === 'dark'
+                                  ? 'bg-purple-500/10 text-purple-300 border-purple-500/20'
+                                  : 'bg-purple-50 text-purple-600 border-purple-200'
+                          }`}
+                        >
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
                     <div className="flex items-center gap-1 text-[10px] text-slate-500 font-mono">
                       <Sparkles size={11} className="text-indigo-500" />
                       <span>Elite Build</span>

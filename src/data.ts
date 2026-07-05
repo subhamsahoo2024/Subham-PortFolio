@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     title: 'GuardianLink',
     description: 'A low-latency, cross-platform emergency response Progressive Web App (PWA) providing real-time AI hazard triage and dynamic indoor/outdoor geospatial evacuation pathfinding during active crises.',
     tags: ['Next.js', 'Firebase', 'LLaMa 4', 'Qwen 3.6', 'Progressive Web App (PWA)', 'Leaflet.js', 'websockets'],
-    category: 'Full-Stack',
+    categories: ['AI', 'Full-Stack Web Development'],
     github: 'https://github.com/subham-sahoo/guardianlink',
     demo: 'https://guardianlink-demo.subhamsahoo.dev',
     features: [
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     title: 'NavX',
     description: 'An intelligent, map-digitizing navigation system that converts physical layout schematics into interactive multi-floor pathfinding graphs with localized natural language support.',
     tags: ['Next.js', 'MongoDB', 'Gemini API', 'Graph Theory', 'Map Digitization', 'Coordinate Synchronization'],
-    category: 'AI/ML',
+    categories: ['AI', 'Full-Stack Web Development'],
     github: 'https://github.com/subham-sahoo/navx',
     demo: 'https://navx-demo.subhamsahoo.dev',
     features: [
@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
     title: 'Smart Heart',
     description: 'A high-throughput clinical analytical engine combining ECG and PCG deep learning architectures for automated cardiovascular risk forecasting and explainable visual medical triage.',
     tags: ['Python', 'FastAPI', 'Next.js', 'Deep Learning', 'Digital Signal Processing (DSP)', 'Grad-CAM', 'Multi-Modal Data Fusion'],
-    category: 'AI/ML',
+    categories: ['AI'],
     github: 'https://github.com/subham-sahoo/smart-heart',
     demo: 'https://smartheart-demo.subhamsahoo.dev',
     features: [
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     title: 'Intervion AI',
     description: 'An adaptive, industrial-grade career assessment simulator leveraging local large language models to construct real-time resume parsing, runtime coding execution sandboxes, and behavioral analysis.',
     tags: ['React', 'TypeScript', 'Python', 'LLaMa 3.1', 'Mistral', 'Natural Language Processing (NLP)', 'Prompt Engineering'],
-    category: 'Full-Stack',
+    categories: ['AI', 'Full-Stack Web Development'],
     github: 'https://github.com/subham-sahoo/intervion-ai',
     demo: 'https://intervion-demo.subhamsahoo.dev',
     features: [
@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
     title: 'INNOVEX',
     description: 'An AI-driven, gamified enterprise accelerator platform for universities designed to orchestrate semantic mentor-investor matchmaking, real-time ecosystem telemetry, and agile startup tracking.',
     tags: ['Next.js', 'Supabase', 'pgvector', 'Vector Search', 'Groq', 'Llama 3.3 70B', 'Hugging Face Embeddings'],
-    category: 'AI/ML',
+    categories: ['AI', 'Full-Stack Web Development'],
     github: 'https://github.com/subham-sahoo/innovex',
     demo: 'https://innovex-demo.subhamsahoo.dev',
     features: [
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     title: 'BlockTrackEd',
     description: 'A multi-portal Web3 decentralized application (dApp) leveraging immutable smart contracts to eliminate financial intermediaries and secure transparent scholarship allocation workflows.',
     tags: ['Solidity', 'Ethers.js', 'MetaMask', 'Web3 Integration', 'Ethereum Sepolia', 'Smart Contracts', 'TypeScript', 'Role-Based Access Control (RBAC)'],
-    category: 'Full-Stack',
+    categories: ['Full-Stack Web Development', 'Web3 & Blockchain Engineering'],
     github: 'https://github.com/subham-sahoo/blocktracked',
     demo: 'https://blocktracked-demo.subhamsahoo.dev',
     features: [
@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
     title: 'Think-book',
     description: 'A modular, high-performance React note management application featuring full-text lookahead indexing, offline-first persistence architectures, and secure tokenized authentication loops.',
     tags: ['React', 'TypeScript', 'Client-Side Indexing', 'Offline-First Architecture', 'Local Storage Serialization', 'JWT Authentication'],
-    category: 'Full-Stack',
+    categories: ['Full-Stack Web Development'],
     github: 'https://github.com/subham-sahoo/think-book',
     demo: 'https://thinkbook-demo.subhamsahoo.dev',
     features: [
@@ -127,7 +127,7 @@ export const PROJECTS: Project[] = [
     title: 'Mini Games Hub',
     description: 'A micro-architected Node.js/Express server optimized for high-speed delivery of raw browser-native client assets and low-overhead browser application deployment.',
     tags: ['Node.js', 'Express.js', 'Static File Hosting', 'Modular Routing', 'Error Middleware', 'HTML5 Canvas', 'DOM Optimization'],
-    category: 'Full-Stack',
+    categories: ['Full-Stack Web Development'],
     github: 'https://github.com/subham-sahoo/mini-games-hub',
     demo: 'https://minigames-demo.subhamsahoo.dev',
     features: [

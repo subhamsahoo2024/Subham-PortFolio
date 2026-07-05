@@ -298,7 +298,7 @@ export default function CVModal({ isOpen, theme, onClose }: CVModalProps) {
                           <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${
                             theme === 'dark' ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' : 'bg-indigo-50 text-indigo-600 border-indigo-100'
                           }`}>
-                            {project.category}
+                            {project.categories.join(' / ')}
                           </span>
                         </div>
                         <p className={`text-[11px] font-light leading-snug line-clamp-2 transition-colors ${

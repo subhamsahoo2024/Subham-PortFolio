@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Linkedin, Github, Mail, ArrowRight, Download, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data';
@@ -9,6 +9,8 @@ interface HeroProps {
 }
 
 export default function Hero({ theme, onOpenCVModal }: HeroProps) {
+  const [imgError, setImgError] = useState(false);
+  const profileImgUrl = '/profile.jpg';
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -235,39 +237,67 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
               {/* Geometric matrix grid background inside avatar */}
               <div className={`absolute inset-0 bg-[linear-gradient(to_right,var(--grid-inner)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-inner)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-60`} style={{ '--grid-inner': theme === 'dark' ? '#312e811f' : '#6366f10d' } as React.CSSProperties}></div>
               
-              {/* Stylized vector silhouette */}
-              <svg
-                viewBox="0 0 100 100"
-                className={`w-full h-full group-hover:text-indigo-950/30 transition-colors duration-500 ${
-                  theme === 'dark' ? 'text-slate-800' : 'text-slate-200'
-                }`}
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Background ambient circular paths */}
-                <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 3" />
-                <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="0.5" />
-                
-                {/* Modern Geometric Cyber Avatar */}
-                <path
-                  d="M50 22C41.7 22 35 28.7 35 37C35 44.1 40 50 46.7 51.6V56.7H31C24.4 56.7 19 62.1 19 68.7V78H81V68.7C81 62.1 75.6 56.7 69 56.7H53.3V51.6C60 50 65 44.1 65 37C65 28.7 58.3 22 50 22Z"
-                  fill="url(#avatar-grad)"
-                  className="opacity-90 group-hover:opacity-100 transition-opacity"
-                />
-                
-                {/* Concentric node coordinates */}
-                <circle cx="50" cy="37" r="2.5" fill="#a5b4fc" />
-                <line x1="50" y1="37" x2="50" y2="51.6" stroke="#6366f1" strokeWidth="1" />
-                <line x1="31" y1="68.7" x2="69" y2="68.7" stroke="#10b981" strokeWidth="0.8" strokeDasharray="2 2" />
+              {!imgError ? (
+                <div className="relative w-full h-full">
+                  <img
+                    src={profileImgUrl}
+                    alt="Subham Sahoo Profile Placeholder"
+                    referrerPolicy="no-referrer"
+                    onError={() => setImgError(true)}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* Digital overlay on photo */}
+                  <div className="absolute inset-0 bg-indigo-500/10 mix-blend-color-dodge pointer-events-none group-hover:bg-transparent transition-all duration-300" />
+                  
+                  {/* Instructions on hover */}
+                  <div className="absolute inset-0 bg-slate-950/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4">
+                    <span className="text-white text-xs font-mono font-bold uppercase tracking-wider mb-1">Replace Image</span>
+                    <span className="text-slate-300 text-[10px] font-mono leading-tight max-w-[140px]">Place your headshot as profile.jpg in public/ folder</span>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  {/* Stylized vector silhouette */}
+                  <svg
+                    viewBox="0 0 100 100"
+                    className={`w-full h-full group-hover:text-indigo-950/30 transition-colors duration-500 ${
+                      theme === 'dark' ? 'text-slate-800' : 'text-slate-200'
+                    }`}
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* Background ambient circular paths */}
+                    <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 3" />
+                    <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="0.5" />
+                    
+                    {/* Modern Geometric Cyber Avatar */}
+                    <path
+                      d="M50 22C41.7 22 35 28.7 35 37C35 44.1 40 50 46.7 51.6V56.7H31C24.4 56.7 19 62.1 19 68.7V78H81V68.7C81 62.1 75.6 56.7 69 56.7H53.3V51.6C60 50 65 44.1 65 37C65 28.7 58.3 22 50 22Z"
+                      fill="url(#avatar-grad)"
+                      className="opacity-90 group-hover:opacity-100 transition-opacity"
+                    />
+                    
+                    {/* Concentric node coordinates */}
+                    <circle cx="50" cy="37" r="2.5" fill="#a5b4fc" />
+                    <line x1="50" y1="37" x2="50" y2="51.6" stroke="#6366f1" strokeWidth="1" />
+                    <line x1="31" y1="68.7" x2="69" y2="68.7" stroke="#10b981" strokeWidth="0.8" strokeDasharray="2 2" />
 
-                <defs>
-                  <linearGradient id="avatar-grad" x1="50" y1="22" x2="50" y2="78" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#818cf8" />
-                    <stop offset="45%" stopColor="#4f46e5" />
-                    <stop offset="100%" stopColor={theme === 'dark' ? '#0f172a' : '#e2e8f0'} />
-                  </linearGradient>
-                </defs>
-              </svg>
+                    <defs>
+                      <linearGradient id="avatar-grad" x1="50" y1="22" x2="50" y2="78" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stopColor="#818cf8" />
+                        <stop offset="45%" stopColor="#4f46e5" />
+                        <stop offset="100%" stopColor={theme === 'dark' ? '#0f172a' : '#e2e8f0'} />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  {/* Informative hover tooltip even on default vector avatar */}
+                  <div className="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4">
+                    <span className="text-white text-xs font-mono font-bold uppercase tracking-wider mb-1">Set Photo</span>
+                    <span className="text-slate-300 text-[10px] font-mono leading-tight max-w-[140px]">Place your headshot as profile.jpg in public/ folder</span>
+                  </div>
+                </>
+              )}
 
               {/* Holographic binary numbers floating in avatar (very subtle) */}
               <div className={`absolute inset-0 flex flex-col justify-between p-6 opacity-20 pointer-events-none font-mono text-[9px] select-none ${

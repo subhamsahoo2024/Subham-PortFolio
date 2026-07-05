@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   description: string;
   tags: string[];
-  category: 'Full-Stack' | 'AI/ML';
+  categories: string[];
   github: string;
   demo: string;
   features: string[];

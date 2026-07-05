@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'motion/react';
 import { Calendar, ShieldCheck, ChevronRight } from 'lucide-react';
 import { EXPERIENCE, CERTIFICATIONS } from '../data';
 
@@ -7,6 +8,38 @@ interface ExperienceCertificationsProps {
 }
 
 export default function ExperienceCertifications({ theme }: ExperienceCertificationsProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [activeCardIdx, setActiveCardIdx] = useState(0);
+
+  // Track scroll progress specifically for this experience container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Track scroll progress specifically for the timeline container to update active state
+  const { scrollYProgress: timelineScrollY } = useScroll({
+    target: timelineRef,
+    offset: ["start center", "end center"]
+  });
+
+  useMotionValueEvent(timelineScrollY, "change", (latest) => {
+    // 2 cards: index 0 (Influenco) and index 1 (Dynx)
+    const nextIdx = latest > 0.5 ? 1 : 0;
+    if (nextIdx !== activeCardIdx) {
+      setActiveCardIdx(nextIdx);
+    }
+  });
+
+  // Map scroll progress to a smooth vertical translation down the experience block
+  const rawY = useTransform(scrollYProgress, [0, 1], [-180, 500]);
+  const y = useSpring(rawY, { stiffness: 50, damping: 22, restDelta: 0.001 });
+
+  // Map scroll progress to dynamic sizing and opacity for organic breathing visual movement
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.25, 0.9]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0.2, 0.75, 0.75, 0.2]);
+
   const cardHoverVariants = {
     hover: {
       scale: 1.015,
@@ -17,12 +50,26 @@ export default function ExperienceCertifications({ theme }: ExperienceCertificat
   };
 
   return (
-    <section id="experience" className={`py-24 relative border-t transition-colors duration-300 ${
-      theme === 'dark' ? 'bg-slate-950/60 border-white/5' : 'bg-white border-slate-200/60'
-    }`}>
-      {/* Background radial soft light */}
-      <div className={`absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full blur-[110px] -z-10 transition-colors ${
-        theme === 'dark' ? 'bg-indigo-600/5' : 'bg-indigo-600/3'
+    <section 
+      ref={containerRef}
+      id="experience" 
+      className={`py-24 relative border-t overflow-hidden transition-colors duration-300 ${
+        theme === 'dark' ? 'bg-slate-950/60 border-white/5' : 'bg-white border-slate-200/60'
+      }`}
+    >
+      {/* Animated Floating Glow Orb (moves down with scroll) */}
+      <motion.div
+        style={{ y, scale, opacity }}
+        className={`absolute left-4 sm:left-[8%] w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] rounded-full blur-[80px] sm:blur-[120px] -z-10 pointer-events-none ${
+          theme === 'dark' 
+            ? 'bg-gradient-to-tr from-indigo-500/20 to-cyan-500/5' 
+            : 'bg-gradient-to-tr from-indigo-500/10 to-indigo-100/5'
+        }`}
+      />
+
+      {/* Complementary static soft light */}
+      <div className={`absolute bottom-1/4 right-0 w-[300px] h-[300px] rounded-full blur-[110px] -z-10 transition-colors ${
+        theme === 'dark' ? 'bg-emerald-500/5' : 'bg-emerald-500/3'
       }`}></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -41,9 +88,21 @@ export default function ExperienceCertifications({ theme }: ExperienceCertificat
         </div>
 
         {/* Experience Chronological Timeline */}
-        <div className={`relative max-w-4xl mx-auto pl-6 sm:pl-8 border-l space-y-12 mb-20 ${
-          theme === 'dark' ? 'border-white/10' : 'border-slate-200'
-        }`}>
+        <div 
+          ref={timelineRef}
+          className={`relative max-w-4xl mx-auto pl-6 sm:pl-8 border-l space-y-12 mb-20 ${
+            theme === 'dark' ? 'border-white/10' : 'border-slate-200'
+          }`}
+        >
+          {/* Active progress overlay on the left border */}
+          <motion.div 
+            style={{ 
+              scaleY: timelineScrollY, 
+              transformOrigin: 'top' 
+            }}
+            className="absolute left-[-1.5px] top-0 bottom-0 w-[2.5px] bg-gradient-to-b from-indigo-500 to-indigo-600 origin-top pointer-events-none shadow-[0_0_8px_rgba(99,102,241,0.5)]"
+          />
+
           {EXPERIENCE.map((job, idx) => (
             <motion.div
               key={job.id}
@@ -54,13 +113,21 @@ export default function ExperienceCertifications({ theme }: ExperienceCertificat
               className="relative"
             >
               {/* Chronological Timeline Circle Node */}
-              <div className={`absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 transition-colors ${
+              <div className={`absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 transition-all duration-500 flex items-center justify-center ${
                 theme === 'dark' ? 'bg-slate-950' : 'bg-white'
               } ${
-                idx === 0 
-                  ? 'border-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]' 
-                  : theme === 'dark' ? 'border-slate-700' : 'border-slate-300'
-              }`} />
+                idx === activeCardIdx 
+                  ? 'border-indigo-500 shadow-[0_0_12px_rgba(99,102,241,0.65)] scale-110' 
+                  : theme === 'dark' ? 'border-slate-800' : 'border-slate-200'
+              }`}>
+                {idx === activeCardIdx && (
+                  <motion.div
+                    layoutId="activeTimelineGlowCircle"
+                    className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 shadow-[0_0_8px_rgba(99,102,241,0.8)]"
+                    transition={{ type: 'spring', stiffness: 180, damping: 20 }}
+                  />
+                )}
+              </div>
 
               <div className={`p-6 sm:p-8 rounded-2xl border backdrop-blur-md transition-all duration-300 ${
                 theme === 'dark'
