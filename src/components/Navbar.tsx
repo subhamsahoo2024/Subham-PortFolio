@@ -1,24 +1,28 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Download, FileText, Sun, Moon } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from "react";
+import { Menu, X, Download, FileText, Sun, Moon } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface NavbarProps {
-  theme: 'light' | 'dark';
+  theme: "light" | "dark";
   onToggleTheme: () => void;
   onOpenCVModal: () => void;
 }
 
-export default function Navbar({ theme, onToggleTheme, onOpenCVModal }: NavbarProps) {
+export default function Navbar({
+  theme,
+  onToggleTheme,
+  onOpenCVModal,
+}: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState("hero");
 
   const navItems = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About', id: 'about' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Projects', id: 'projects' },
+    { label: "Home", id: "hero" },
+    { label: "About", id: "about" },
+    { label: "Skills", id: "skills" },
+    { label: "Experience", id: "experience" },
+    { label: "Projects", id: "projects" },
   ];
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenCVModal }: NavbarPr
       setScrolled(window.scrollY > 20);
 
       // Simple active section detection
-      const sections = navItems.map(item => document.getElementById(item.id));
+      const sections = navItems.map((item) => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 120;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -38,8 +42,8 @@ export default function Navbar({ theme, onToggleTheme, onOpenCVModal }: NavbarPr
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleScrollTo = (id: string) => {
@@ -54,7 +58,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenCVModal }: NavbarPr
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -67,9 +71,9 @@ export default function Navbar({ theme, onToggleTheme, onOpenCVModal }: NavbarPr
 SUBHAM SAHOO - PORTFOLIO RESUME
 ========================================
 Title: Building Scalable Full-Stack AI Solutions
-Email: project4315@gmail.com
-Phone: +91 xxxxxxxxxx
-Education: Chennai Institute of Technology, B.E. CSE (2024 - 2028) | CGPA: 8.9/10
+Email: subhamsahoo23415@gmail.com
+Phone: +91 8072256919
+Education: Chennai Institute of Technology, B.E. CSE (2024 - 2028) | CGPA: 9.2/10
 
 EXPERIENCE:
 1. Influenco (May 2026 - June 2026) | Frontend Developer Intern
@@ -98,11 +102,11 @@ CERTIFICATIONS:
 - IBM AI Fundamentals
 ========================================
     `;
-    const blob = new Blob([cvContent.trim()], { type: 'text/plain' });
+    const blob = new Blob([cvContent.trim()], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
-    link.download = 'Subham_Sahoo_Resume.txt';
+    link.download = "Subham_Sahoo_Resume.txt";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -113,10 +117,10 @@ CERTIFICATIONS:
       id="navbar-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-8 py-4 ${
         scrolled
-          ? theme === 'dark'
-            ? 'bg-slate-950/75 backdrop-blur-md border-b border-white/10 shadow-lg shadow-indigo-950/20'
-            : 'bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-lg shadow-slate-100/50'
-          : 'bg-transparent'
+          ? theme === "dark"
+            ? "bg-slate-950/75 backdrop-blur-md border-b border-white/10 shadow-lg shadow-indigo-950/20"
+            : "bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-lg shadow-slate-100/50"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -125,40 +129,54 @@ CERTIFICATIONS:
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() => handleScrollTo('hero')}
+          onClick={() => handleScrollTo("hero")}
         >
           <div className="relative flex items-center justify-center w-9 h-9 rounded-lg bg-gradient-to-tr from-indigo-600 to-emerald-500 font-bold text-white text-lg tracking-wider">
             SS
             <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-indigo-600 to-emerald-500 blur-sm -z-10 opacity-60"></div>
           </div>
-          <span className={`font-display font-bold text-xl tracking-tight bg-gradient-to-r bg-clip-text text-transparent ${
-            theme === 'dark' ? 'from-white via-slate-200 to-slate-400' : 'from-slate-900 via-slate-700 to-slate-500'
-          }`}>
-            Subham Sahoo
+          <span
+            className={`font-display font-bold text-xl tracking-tight bg-gradient-to-r bg-clip-text text-transparent ${
+              theme === "dark"
+                ? "from-white via-slate-200 to-slate-400"
+                : "from-slate-900 via-slate-700 to-slate-500"
+            }`}
+          >
+            Subham Sahoo S
           </span>
         </motion.div>
 
         {/* Desktop Nav Items */}
-        <nav className={`hidden md:flex items-center gap-1 p-1.5 rounded-full backdrop-blur-md border ${
-          theme === 'dark' ? 'bg-white/5 border-white/10' : 'bg-slate-100/80 border-slate-200'
-        }`}>
+        <nav
+          className={`hidden md:flex items-center gap-1 p-1.5 rounded-full backdrop-blur-md border ${
+            theme === "dark"
+              ? "bg-white/5 border-white/10"
+              : "bg-slate-100/80 border-slate-200"
+          }`}
+        >
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleScrollTo(item.id)}
               className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 cursor-pointer ${
                 activeSection === item.id
-                  ? theme === 'dark' ? 'text-white' : 'text-indigo-600 font-semibold'
-                  : theme === 'dark' ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-900'
+                  ? theme === "dark"
+                    ? "text-white"
+                    : "text-indigo-600 font-semibold"
+                  : theme === "dark"
+                    ? "text-slate-400 hover:text-slate-200"
+                    : "text-slate-500 hover:text-slate-900"
               }`}
             >
               {activeSection === item.id && (
                 <motion.div
                   layoutId="active-pill"
                   className={`absolute inset-0 rounded-full border ${
-                    theme === 'dark' ? 'bg-indigo-600/30 border-indigo-500/50' : 'bg-indigo-50 border-indigo-200'
+                    theme === "dark"
+                      ? "bg-indigo-600/30 border-indigo-500/50"
+                      : "bg-indigo-50 border-indigo-200"
                   }`}
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
               <span className="relative z-10">{item.label}</span>
@@ -172,21 +190,23 @@ CERTIFICATIONS:
           <button
             onClick={onToggleTheme}
             className={`p-2 rounded-lg border transition-all duration-200 active:scale-95 cursor-pointer ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10 text-amber-400 hover:bg-white/10 hover:text-amber-300'
-                : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:text-indigo-600'
+              theme === "dark"
+                ? "bg-white/5 border-white/10 text-amber-400 hover:bg-white/10 hover:text-amber-300"
+                : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:text-indigo-600"
             }`}
-            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            title={
+              theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"
+            }
           >
-            {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
           </button>
 
           <button
             onClick={onOpenCVModal}
             className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg border transition-all duration-200 active:scale-98 cursor-pointer ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white'
-                : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:text-slate-900'
+              theme === "dark"
+                ? "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white"
+                : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:text-slate-900"
             }`}
           >
             <FileText size={15} />
@@ -197,7 +217,10 @@ CERTIFICATIONS:
             className="group relative flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-indigo-600 text-white overflow-hidden shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/35 transition-all duration-300 active:scale-98 cursor-pointer"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-            <Download size={15} className="group-hover:translate-y-[1px] transition-transform duration-200" />
+            <Download
+              size={15}
+              className="group-hover:translate-y-[1px] transition-transform duration-200"
+            />
             <span>Download CV</span>
           </button>
         </div>
@@ -208,21 +231,23 @@ CERTIFICATIONS:
           <button
             onClick={onToggleTheme}
             className={`p-2 rounded-lg border active:scale-95 transition-all cursor-pointer ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10 text-amber-400'
-                : 'bg-slate-100 border-slate-200 text-slate-700'
+              theme === "dark"
+                ? "bg-white/5 border-white/10 text-amber-400"
+                : "bg-slate-100 border-slate-200 text-slate-700"
             }`}
-            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            title={
+              theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"
+            }
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           <button
             onClick={onOpenCVModal}
             className={`p-2 rounded-lg border active:scale-95 cursor-pointer ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10 text-slate-300'
-                : 'bg-slate-100 border-slate-200 text-slate-700'
+              theme === "dark"
+                ? "bg-white/5 border-white/10 text-slate-300"
+                : "bg-slate-100 border-slate-200 text-slate-700"
             }`}
             title="View CV"
           >
@@ -231,9 +256,9 @@ CERTIFICATIONS:
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`p-2 rounded-lg border active:scale-95 cursor-pointer ${
-              theme === 'dark'
-                ? 'bg-white/5 border-white/10 text-slate-300'
-                : 'bg-slate-100 border-slate-200 text-slate-700'
+              theme === "dark"
+                ? "bg-white/5 border-white/10 text-slate-300"
+                : "bg-slate-100 border-slate-200 text-slate-700"
             }`}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -246,13 +271,13 @@ CERTIFICATIONS:
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
             className={`md:hidden mt-4 rounded-xl border backdrop-blur-lg overflow-hidden shadow-2xl ${
-              theme === 'dark'
-                ? 'border-white/10 bg-slate-900/95 shadow-indigo-950/40'
-                : 'border-slate-200 bg-white/95 shadow-slate-200/50'
+              theme === "dark"
+                ? "border-white/10 bg-slate-900/95 shadow-indigo-950/40"
+                : "border-slate-200 bg-white/95 shadow-slate-200/50"
             }`}
           >
             <div className="p-4 flex flex-col gap-3">
@@ -262,19 +287,21 @@ CERTIFICATIONS:
                   onClick={() => handleScrollTo(item.id)}
                   className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
                     activeSection === item.id
-                      ? theme === 'dark'
-                        ? 'bg-indigo-600/20 text-indigo-400 border-l-2 border-indigo-500'
-                        : 'bg-indigo-50 text-indigo-600 border-l-2 border-indigo-500'
-                      : theme === 'dark'
-                        ? 'text-slate-300 hover:bg-white/5'
-                        : 'text-slate-600 hover:bg-slate-50'
+                      ? theme === "dark"
+                        ? "bg-indigo-600/20 text-indigo-400 border-l-2 border-indigo-500"
+                        : "bg-indigo-50 text-indigo-600 border-l-2 border-indigo-500"
+                      : theme === "dark"
+                        ? "text-slate-300 hover:bg-white/5"
+                        : "text-slate-600 hover:bg-slate-50"
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
 
-              <div className={`h-[1px] my-1 ${theme === 'dark' ? 'bg-white/5' : 'bg-slate-100'}`}></div>
+              <div
+                className={`h-[1px] my-1 ${theme === "dark" ? "bg-white/5" : "bg-slate-100"}`}
+              ></div>
 
               <div className="flex items-center gap-3 pt-1">
                 <button
@@ -283,9 +310,9 @@ CERTIFICATIONS:
                     onOpenCVModal();
                   }}
                   className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-lg border active:scale-98 cursor-pointer ${
-                    theme === 'dark'
-                      ? 'bg-white/5 border-white/10 text-slate-300'
-                      : 'bg-slate-100 border-slate-200 text-slate-700'
+                    theme === "dark"
+                      ? "bg-white/5 border-white/10 text-slate-300"
+                      : "bg-slate-100 border-slate-200 text-slate-700"
                   }`}
                 >
                   <FileText size={15} />
