@@ -228,11 +228,33 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
             />
 
             {/* Primary Profile Silhouette Area */}
-            <div className={`absolute w-[68%] h-[68%] rounded-full border-2 flex items-center justify-center overflow-hidden shadow-2xl transition-all duration-300 group hover:border-indigo-500/50 ${
-              theme === 'dark'
-                ? 'bg-slate-900 border-white/10 shadow-indigo-950/50'
-                : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50'
-            }`}>
+            <motion.div
+              whileHover={{
+                scale: 1.12,
+                boxShadow: theme === 'dark'
+                  ? '0 0 45px rgba(99, 102, 241, 0.55), 0 0 25px rgba(16, 185, 129, 0.3)'
+                  : '0 0 45px rgba(99, 102, 241, 0.4), 0 0 25px rgba(99, 102, 241, 0.15)',
+                borderColor: 'rgba(99, 102, 241, 0.7)',
+              }}
+              whileTap={{
+                scale: 1.18,
+                boxShadow: theme === 'dark'
+                  ? '0 0 60px rgba(99, 102, 241, 0.8), 0 0 35px rgba(16, 185, 129, 0.5)'
+                  : '0 0 60px rgba(99, 102, 241, 0.6), 0 0 35px rgba(99, 102, 241, 0.25)',
+                borderColor: 'rgba(99, 102, 241, 0.9)',
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 80,
+                damping: 14,
+                mass: 0.85
+              }}
+              className={`absolute w-[68%] h-[68%] rounded-full border-2 flex items-center justify-center overflow-hidden cursor-pointer group select-none ${
+                theme === 'dark'
+                  ? 'bg-slate-900 border-white/10 shadow-[0_0_20px_rgba(99,102,241,0.15)]'
+                  : 'bg-white border-slate-200 shadow-[0_0_20px_rgba(99,102,241,0.08)]'
+              }`}
+            >
               
               {/* Geometric matrix grid background inside avatar */}
               <div className={`absolute inset-0 bg-[linear-gradient(to_right,var(--grid-inner)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-inner)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-60`} style={{ '--grid-inner': theme === 'dark' ? '#312e811f' : '#6366f10d' } as React.CSSProperties}></div>
@@ -312,7 +334,7 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
                   <span>01110</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Glowing Orbiting Widgets */}
             <motion.div
