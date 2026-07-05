@@ -171,41 +171,71 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     name: 'Languages',
     skills: [
       { name: 'C++', level: 90 },
-      { name: 'Java', level: 85 },
-      { name: 'Python', level: 88 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'JavaScript', level: 90 }
+      { name: 'Java', level: 80 },
+      { name: 'Python', level: 85 },
+      { name: 'JavaScript', level: 85 },
+      { name: 'TypeScript', level: 80 },
+      { name: 'SQL', level: 70 }
     ]
   },
   {
     id: 'frontend',
     name: 'Frontend',
     skills: [
-      { name: 'React', level: 90 },
-      { name: 'Next.js', level: 85 },
-      { name: 'Tailwind CSS', level: 95 },
-      { name: 'HTML5/CSS3', level: 92 },
-      { name: 'Framer Motion', level: 82 }
+      { name: 'React.js', level: 90 },
+      { name: 'Next.js', level: 90 },
+      { name: 'HTML', level: 92 },
+      { name: 'CSS', level: 88 },
+      { name: 'Tailwind CSS', level: 90 }
     ]
   },
   {
     id: 'backend',
-    name: 'Backend & APIs',
+    name: 'Backend',
     skills: [
-      { name: 'Node.js', level: 85 },
-      { name: 'Express', level: 88 },
+      { name: 'Node.js', level: 75 },
+      { name: 'Express.js', level: 80 },
       { name: 'REST APIs', level: 90 },
-      { name: 'FastAPI', level: 80 }
+      { name: 'JWT Authentication', level: 75 }
     ]
   },
   {
     id: 'databases',
-    name: 'Databases & Services',
+    name: 'Databases',
     skills: [
       { name: 'MongoDB', level: 85 },
-      { name: 'Supabase', level: 82 },
-      { name: 'MySQL', level: 80 },
-      { name: 'Firebase', level: 85 }
+      { name: 'MySQL', level: 60 },
+      { name: 'Supabase', level: 80 }
+    ]
+  },
+  {
+    id: 'tools',
+    name: 'Developer Tools',
+    skills: [
+      { name: 'Git', level: 90 },
+      { name: 'GitHub', level: 90 },
+      { name: 'VS Code', level: 90 },
+      { name: 'Postman', level: 80 },
+      { name: 'Zustand', level: 80 }
+    ]
+  },
+  {
+    id: 'aiml',
+    name: 'AI/ML',
+    skills: [
+      { name: 'Machine Learning', level: 80 },
+      { name: 'LLMs', level: 70 },
+      { name: 'NLP', level: 70 }
+    ]
+  },
+  {
+    id: 'corescs',
+    name: 'Core Computer Science',
+    skills: [
+      { name: 'Data Structures', level: 92 },
+      { name: 'Algorithms', level: 92 },
+      { name: 'OOP', level: 85 },
+      { name: 'Problem solving', level: 92 }
     ]
   }
 ];
@@ -213,21 +243,27 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const SOFT_SKILLS: SoftSkill[] = [
   {
     id: 'soft1',
-    title: 'Hackathon Team Lead',
-    metric: '3 multi-modal sprints',
-    description: 'Directed fast-paced engineering teams from dynamic architectural brainstorming to successful feature deployment within high-stakes 36-hour sprints.'
+    title: 'Technical Leadership (Agile Sprints)',
+    metric: 'Hackathon Lead',
+    description: 'You have won major multi-day hackathons (HackBells 3.0, GDG TechSprint). This proves you can lead technical direction, divide development tasks under extreme time constraints, and ship working code under high pressure.'
   },
   {
     id: 'soft2',
-    title: 'Competitive Programmer',
-    metric: 'Top-tier problem solving',
-    description: 'Excel in algorithmic logic design, complex spatial trees, dynamic programming, and writing highly optimized, memory-efficient source code.'
+    title: 'Algorithmic Grit & Analytical Thinking',
+    metric: 'Continuous Grit',
+    description: 'Consistency is hard. Solving 900+ highly complex data structure problems requires intense mental stamina, structural debugging capabilities, and deep optimization focus.'
   },
   {
     id: 'soft3',
-    title: 'Continuous Learner',
-    metric: '5+ Industry Credentials',
-    description: 'Proactively upskilling in AI, Cloud Computing, and advanced system design, enabling immediate contribution to state-of-the-art tech stacks.'
+    title: 'Rapid Architectural Adaptability',
+    metric: 'Full-Stack Adaptability',
+    description: 'Your project portfolio transitions smoothly from blockchain decentralization (BlockTrackEd) to Deep Learning audio tensors (Smart Heart) to advanced AI vector search. You possess the ability to rapidly learn an entirely new framework or API and implement it within weeks.'
+  },
+  {
+    id: 'soft4',
+    title: 'Cross-Functional Collaboration',
+    metric: 'Team Collaboration',
+    description: 'Your internships required collaborating directly with backend developers, product owners, and clients to translate loose requirements into pixel-perfect, production-ready REST integrations.'
   }
 ];
 
