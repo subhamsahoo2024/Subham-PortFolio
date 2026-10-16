@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import AboutEducation from "./components/AboutEducation";
@@ -7,10 +8,12 @@ import ExperienceCertifications from "./components/ExperienceCertifications";
 import ProjectsGrid from "./components/ProjectsGrid";
 import CVModal from "./components/CVModal";
 import CursorAvatar from "./components/CursorAvatar";
-import { Mail, Github, Linkedin, ArrowUp } from "lucide-react";
+import FastChargingLoader from "./components/FastChargingLoader";
+import { Mail, Github, Linkedin, ArrowUp, Zap } from "lucide-react";
 import { PERSONAL_INFO } from "./data";
 
 export default function App() {
+  const [isAppLoaded, setIsAppLoaded] = useState(false);
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     // Read from localStorage if available, default to 'dark'
@@ -54,6 +57,17 @@ export default function App() {
           : "bg-slate-50 text-slate-800"
       }`}
     >
+      {/* Fast Charging Initial Loading Screen (0% -> 100% -> Welcome & Explore) */}
+      <AnimatePresence>
+        {!isAppLoaded && (
+          <FastChargingLoader
+            key="fast-charger-screen"
+            onComplete={() => setIsAppLoaded(true)}
+            theme={theme}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Floating Header */}
       <Navbar
         theme={theme}
@@ -150,6 +164,24 @@ export default function App() {
             <div
               className={`w-[1px] h-4 ${theme === "dark" ? "bg-white/10" : "bg-slate-200"}`}
             ></div>
+
+            {/* Replay Fast Loading Intro Button */}
+            <button
+              onClick={() => {
+                setIsAppLoaded(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              data-cursor-tip="Replay fast loading intro"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer active:scale-95 ${
+                theme === "dark"
+                  ? "bg-white/5 border-white/10 text-slate-300 hover:text-white hover:border-emerald-500/40 hover:bg-emerald-500/10"
+                  : "bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:border-emerald-400"
+              }`}
+              title="Replay Fast Loading Intro"
+            >
+              <Zap size={14} className="text-amber-400 fill-amber-400" />
+              <span>Intro</span>
+            </button>
 
             <button
               onClick={scrollToTop}
