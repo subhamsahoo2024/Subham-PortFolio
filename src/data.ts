@@ -41,6 +41,97 @@ Let's connect and grow together!`,
 
 export const PROJECTS: Project[] = [
   {
+    id: "navx",
+    title: "NavX",
+    description:
+      "An intelligent, map-digitizing navigation system that converts physical layout schematics into interactive multi-floor pathfinding graphs with localized natural language support.",
+    tags: [
+      "Next.js",
+      "MongoDB",
+      "Gemini API",
+      "Graph Theory",
+      "Map Digitization",
+      "Coordinate Synchronization",
+    ],
+    categories: ["AI", "Full-Stack"],
+    github: "https://github.com/subhamsahoo2024/NavX-indoor-nav",
+    demo: "https://cit-maps.vercel.app/",
+    features: [
+      "Engineered a custom graph abstraction layer capable of modeling complex multi-floor vertical transitions, executing Dijkstra’s Algorithm for real-time routing.",
+      "Integrated a context-aware AI concierge via the Gemini API to parse ambiguous natural language spatial queries into structured path coordinates.",
+      "Designed an automated coordinate mapping matrix syncing visual QR codes to absolute physical floor layouts for instantaneous user self-positioning.",
+    ],
+  },
+  {
+    id: "intervion-ai",
+    title: "Intervion AI",
+    description:
+      "An adaptive, industrial-grade career assessment simulator leveraging local large language models to construct real-time resume parsing, runtime coding execution sandboxes, and behavioral analysis.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Python",
+      "LLaMa 3.1",
+      "Mistral",
+      "Natural Language Processing (NLP)",
+      "Prompt Engineering",
+    ],
+    categories: ["AI", "Full-Stack"],
+    github: "https://github.com/subhamsahoo2024/Intervion-ai",
+    demo: "https://intervion-ai-sst.vercel.app/login",
+    features: [
+      "Engineered an adaptive prompt-chaining framework using LLaMa 3.1 and Mistral to systematically isolate structural resume data and dynamically generate highly specific, non-linear technical interview questions.",
+      "Built a secure, sandboxed code execution runtime capable of compiling, parsing, and verifying user program solutions against automated algorithmic time-complexity parameters.",
+      "Developed complex data visualization telemetry dashboards with TypeScript and Recharts to map unstructured performance transcripts into readable multi-metric user readiness metrics.",
+    ],
+  },
+  {
+    id: "smart-heart",
+    title: "Smart Heart",
+    description:
+      "A high-throughput clinical analytical engine combining ECG and PCG deep learning architectures for automated cardiovascular risk forecasting and explainable visual medical triage.",
+    tags: [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "Deep Learning",
+      "Digital Signal Processing (DSP)",
+      "Grad-CAM",
+      "Multi-Modal Data Fusion",
+    ],
+    categories: ["AI"],
+    github: "https://github.com/subhamsahoo2024/SmartHeart",
+    demo: "",
+    features: [
+      "Designed a decoupled, asynchronous FastAPI processing backend utilizing multi-threading to handle raw signal uploads and model execution concurrently without thread-blocking.",
+      "Built a digital signal processing (DSP) pipeline that dynamically transforms raw phonocardiogram (PCG) acoustics into high-fidelity Mel-spectrogram tensors for neural network consumption.",
+      "Implemented Grad-CAM visualization modules to calculate and project model attention maps over 1D and 2D signal data, providing explainable, audit-ready diagnostic assets.",
+    ],
+  },
+  {
+    id: "innovex",
+    title: "INNOVEX",
+    description:
+      "An AI-driven, gamified enterprise accelerator platform for universities designed to orchestrate semantic mentor-investor matchmaking, real-time ecosystem telemetry, and agile startup tracking.",
+    tags: [
+      "Next.js",
+      "Supabase",
+      "pgvector",
+      "Vector Search",
+      "Groq",
+      "Llama 3.3 70B",
+      "Hugging Face Embeddings",
+    ],
+    categories: ["AI", "Full-Stack"],
+    github: "https://github.com/subhamsahoo2024/campus-connect-sdg",
+    demo: "https://campus-connect-murex-eight.vercel.app/",
+    features: [
+      "Architected an advanced vector search infrastructure leveraging Supabase (pgvector) and Hugging Face (gte-small embeddings) to execute sub-second multi-metric matchmaking across user profiles.",
+      "Engineered an asynchronous multi-LLM data orchestration layer utilizing Groq (Llama 3.3 70B and Llama 3.1 8B) to automatically compute low-latency strategic analytics reports and dynamic gamified challenges.",
+      "Constructed a highly interactive pipeline UI utilizing @dnd-kit for drag-and-drop Kanban deal-flow states alongside real-time data visualizations via Recharts.",
+    ],
+  },
+  {
     id: "peoplepay360",
     title: "PeoplePay360",
     description:
@@ -57,9 +148,9 @@ export const PROJECTS: Project[] = [
       "Payroll Simulation",
       "Biometrics",
     ],
-    categories: ["Full-Stack", "AI"],
+    categories: ["Full-Stack"],
     github: "https://github.com/subhamsahoo2024/PeoplePay360",
-    demo: "https://peoplepay360.vercel.app/",
+    demo: "",
     features: [
       "Engineered an automated Payroll Readiness Score engine checking payruns for missing bank details, expired/overlapping contracts, duplicate payslips, attendance gaps, and unusual salary spikes.",
       "Built an Explainable Salary Difference engine breaking down all net salary variances (unpaid-leave deductions, approved overtime, custom adjustments) with line-by-line justification.",
@@ -88,97 +179,6 @@ export const PROJECTS: Project[] = [
       "Optimized end-to-end data telemetry to deliver sub-3 second localized emergency routing via zero-friction QR-code positioning.",
       "Architected a multimodal data ingestion system using open-weight LLaMa 4 and Qwen 3.6 models for frame-by-frame visual hazard assessment with strictly structured JSON payload outputs.",
       "Implemented dynamic graph-recalculation on a Leaflet.js engine using OpenStreetMap coordinates to instantaneously adapt safe routes around shifting incident roadblocks.",
-    ],
-  },
-  {
-    id: "navx",
-    title: "NavX",
-    description:
-      "An intelligent, map-digitizing navigation system that converts physical layout schematics into interactive multi-floor pathfinding graphs with localized natural language support.",
-    tags: [
-      "Next.js",
-      "MongoDB",
-      "Gemini API",
-      "Graph Theory",
-      "Map Digitization",
-      "Coordinate Synchronization",
-    ],
-    categories: ["AI", "Full-Stack"],
-    github: "https://github.com/subhamsahoo2024/NavX-indoor-nav",
-    demo: "https://cit-maps.vercel.app/",
-    features: [
-      "Engineered a custom graph abstraction layer capable of modeling complex multi-floor vertical transitions, executing Dijkstra’s Algorithm for real-time routing.",
-      "Integrated a context-aware AI concierge via the Gemini API to parse ambiguous natural language spatial queries into structured path coordinates.",
-      "Designed an automated coordinate mapping matrix syncing visual QR codes to absolute physical floor layouts for instantaneous user self-positioning.",
-    ],
-  },
-  {
-    id: "smart-heart",
-    title: "Smart Heart",
-    description:
-      "A high-throughput clinical analytical engine combining ECG and PCG deep learning architectures for automated cardiovascular risk forecasting and explainable visual medical triage.",
-    tags: [
-      "Python",
-      "FastAPI",
-      "Next.js",
-      "Deep Learning",
-      "Digital Signal Processing (DSP)",
-      "Grad-CAM",
-      "Multi-Modal Data Fusion",
-    ],
-    categories: ["AI"],
-    github: "https://github.com/subhamsahoo2024/SmartHeart",
-    demo: "",
-    features: [
-      "Designed a decoupled, asynchronous FastAPI processing backend utilizing multi-threading to handle raw signal uploads and model execution concurrently without thread-blocking.",
-      "Built a digital signal processing (DSP) pipeline that dynamically transforms raw phonocardiogram (PCG) acoustics into high-fidelity Mel-spectrogram tensors for neural network consumption.",
-      "Implemented Grad-CAM visualization modules to calculate and project model attention maps over 1D and 2D signal data, providing explainable, audit-ready diagnostic assets.",
-    ],
-  },
-  {
-    id: "intervion-ai",
-    title: "Intervion AI",
-    description:
-      "An adaptive, industrial-grade career assessment simulator leveraging local large language models to construct real-time resume parsing, runtime coding execution sandboxes, and behavioral analysis.",
-    tags: [
-      "React",
-      "TypeScript",
-      "Python",
-      "LLaMa 3.1",
-      "Mistral",
-      "Natural Language Processing (NLP)",
-      "Prompt Engineering",
-    ],
-    categories: ["AI", "Full-Stack"],
-    github: "https://github.com/subhamsahoo2024/Intervion-ai",
-    demo: "https://intervion-ai-sst.vercel.app/login",
-    features: [
-      "Engineered an adaptive prompt-chaining framework using LLaMa 3.1 and Mistral to systematically isolate structural resume data and dynamically generate highly specific, non-linear technical interview questions.",
-      "Built a secure, sandboxed code execution runtime capable of compiling, parsing, and verifying user program solutions against automated algorithmic time-complexity parameters.",
-      "Developed complex data visualization telemetry dashboards with TypeScript and Recharts to map unstructured performance transcripts into readable multi-metric user readiness metrics.",
-    ],
-  },
-  {
-    id: "innovex",
-    title: "INNOVEX",
-    description:
-      "An AI-driven, gamified enterprise accelerator platform for universities designed to orchestrate semantic mentor-investor matchmaking, real-time ecosystem telemetry, and agile startup tracking.",
-    tags: [
-      "Next.js",
-      "Supabase",
-      "pgvector",
-      "Vector Search",
-      "Groq",
-      "Llama 3.3 70B",
-      "Hugging Face Embeddings",
-    ],
-    categories: ["AI", "Full-Stack"],
-    github: "https://github.com/subhamsahoo2024/campus-connect-sdg",
-    demo: "https://campus-connect-murex-eight.vercel.app/",
-    features: [
-      "Architected an advanced vector search infrastructure leveraging Supabase (pgvector) and Hugging Face (gte-small embeddings) to execute sub-second multi-metric matchmaking across user profiles.",
-      "Engineered an asynchronous multi-LLM data orchestration layer utilizing Groq (Llama 3.3 70B and Llama 3.1 8B) to automatically compute low-latency strategic analytics reports and dynamic gamified challenges.",
-      "Constructed a highly interactive pipeline UI utilizing @dnd-kit for drag-and-drop Kanban deal-flow states alongside real-time data visualizations via Recharts.",
     ],
   },
   {
@@ -429,8 +429,8 @@ export const HACKATHONS: HackathonWin[] = [
     date: "2026",
     projectName: "PeoplePay360",
     projectRepo: "https://github.com/subhamsahoo2024/PeoplePay360",
-    projectDemo: "https://peoplepay360.vercel.app/",
-    image: "/images/peoplepay360.png",
+    projectDemo: "",
+    image: "/images/hackathons/odoo_win.jpeg",
     description:
       "Ranked #1 out of over 8,000+ national participants in the Odoo Hackathon 2026. Engineered PeoplePay360, a role-based explainable HR and payroll management platform featuring an automated Payroll Readiness Score, explainable salary difference engine, and an interactive what-if payroll impact simulator.",
     highlights: [
@@ -444,7 +444,7 @@ export const HACKATHONS: HackathonWin[] = [
   {
     id: "hackbells-3",
     title: "HackBells 3.0",
-    organizer: "St. Joseph's Group of Institutions",
+    organizer: "Sree Buddha College of Engineering",
     award: "Winner (1st Place)",
     rankBadge: "🏆 1st Place / 200+ Teams",
     prize: "₹1,00,000 Cash Prize",
@@ -452,7 +452,7 @@ export const HACKATHONS: HackathonWin[] = [
     projectName: "Intervion AI",
     projectRepo: "https://github.com/subhamsahoo2024/Intervion-ai",
     projectDemo: "https://intervion-ai-sst.vercel.app/login",
-    image: "/images/hackathons/hackbells_win.jpg",
+    image: "/images/hackathons/hackbells_win.jpeg",
     description:
       "Grand Champion of an intensive 36-hour national engineering hackathon. Architected Intervion AI, an adaptive, industrial-grade career assessment and interview simulator leveraging local LLMs for real-time resume parsing, runtime coding execution sandboxes, and behavioral analysis.",
     highlights: [
@@ -473,7 +473,7 @@ export const HACKATHONS: HackathonWin[] = [
     projectName: "NavX",
     projectRepo: "https://github.com/subhamsahoo2024/NavX-indoor-nav",
     projectDemo: "https://cit-maps.vercel.app/",
-    image: "/images/hackathons/gdg_win.jpg",
+    image: "/images/hackathons/gdg_win.jpeg",
     description:
       "Secured First Place at the Google Developer Groups TechSprint Hackathon with NavX — an intelligent, map-digitizing navigation system that converts physical layout schematics into interactive multi-floor pathfinding graphs with localized natural language support.",
     highlights: [
@@ -494,7 +494,7 @@ export const HACKATHONS: HackathonWin[] = [
     projectName: "INNOVEX (Campus SDG Accelerator)",
     projectRepo: "https://github.com/subhamsahoo2024/campus-connect-sdg",
     projectDemo: "https://campus-connect-murex-eight.vercel.app/",
-    image: "/images/hackathons/citil_win.jpg",
+    image: "/images/hackathons/citil_win.jpeg",
     description:
       "Recognized for high-impact sustainability technology. Built INNOVEX, an AI-powered enterprise accelerator platform designed to orchestrate semantic mentor-investor matchmaking and real-time sustainability metrics.",
     highlights: [

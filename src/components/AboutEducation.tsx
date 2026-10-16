@@ -155,11 +155,6 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
                   {/* Glowing Overlay on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-700" />
                   
-                  {/* Click to expand pill */}
-                  <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg backdrop-blur-md bg-slate-950/70 border border-white/20 text-white text-[11px] font-mono group-hover:bg-indigo-600 transition-colors">
-                    <Maximize2 size={12} />
-                    <span>Click to Enlarge</span>
-                  </div>
                 </div>
               </motion.div>
             </div>

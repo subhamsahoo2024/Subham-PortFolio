@@ -283,7 +283,7 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
                   ? "bg-slate-900 border-white/10 shadow-[0_0_20px_rgba(99,102,241,0.15)]"
                   : "bg-white border-slate-200 shadow-[0_0_20px_rgba(99,102,241,0.08)]"
               }`}
-              title="Click to enlarge photo & view full profile headshot"
+              
             >
               {/* Geometric matrix grid background inside avatar */}
               <div
