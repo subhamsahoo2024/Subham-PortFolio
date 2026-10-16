@@ -201,7 +201,7 @@ export default function HackathonExperience({ theme }: HackathonExperienceProps)
   };
 
   return (
-    <div className="mb-24">
+    <div id="hackathons" data-cursor-tip="Hackathon experience & 4 podium wins" className="mb-24">
       {/* Hackathon Section Eyebrow & Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
@@ -260,6 +260,7 @@ export default function HackathonExperience({ theme }: HackathonExperienceProps)
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
+            data-cursor-tip={`Hackathon: ${hackathon.title} (${hackathon.award})`}
             className={`group rounded-2xl border backdrop-blur-md overflow-hidden flex flex-col justify-between transition-all duration-300 ${
               theme === 'dark'
                 ? 'bg-slate-900/60 border-white/10 hover:border-amber-500/40 hover:shadow-[0_12px_40px_-15px_rgba(245,158,11,0.2)]'

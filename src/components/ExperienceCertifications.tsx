@@ -54,6 +54,7 @@ export default function ExperienceCertifications({ theme }: ExperienceCertificat
     <section 
       ref={containerRef}
       id="experience" 
+      data-cursor-tip="Work milestones & experience"
       className={`py-24 relative border-t overflow-hidden transition-colors duration-300 ${
         theme === 'dark' ? 'bg-slate-950/60 border-white/5' : 'bg-white border-slate-200/60'
       }`}
@@ -212,7 +213,7 @@ export default function ExperienceCertifications({ theme }: ExperienceCertificat
           </div>
 
           {/* Grid of Certifications */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div data-cursor-tip="Verified industry certifications" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {CERTIFICATIONS.map((cert) => (
               <motion.div
                 key={cert.id}

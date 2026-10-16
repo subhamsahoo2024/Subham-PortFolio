@@ -6,6 +6,7 @@ import Skills from "./components/Skills";
 import ExperienceCertifications from "./components/ExperienceCertifications";
 import ProjectsGrid from "./components/ProjectsGrid";
 import CVModal from "./components/CVModal";
+import CursorAvatar from "./components/CursorAvatar";
 import { Mail, Github, Linkedin, ArrowUp } from "lucide-react";
 import { PERSONAL_INFO } from "./data";
 
@@ -60,6 +61,9 @@ export default function App() {
         onOpenCVModal={() => setIsCVModalOpen(true)}
       />
 
+      {/* Desktop Mouse Follower Avatar Companion */}
+      <CursorAvatar theme={theme} />
+
       {/* Primary Layout Sections */}
       <main className="flex-1">
         <Hero theme={theme} onOpenCVModal={() => setIsCVModalOpen(true)} />
@@ -72,6 +76,7 @@ export default function App() {
       {/* Visual Footer */}
       <footer
         id="portfolio-footer"
+        data-cursor-tip="Connect with me — Let's collaborate"
         className={`py-12 px-6 md:px-8 relative z-10 overflow-hidden border-t transition-all duration-300 ${
           theme === "dark"
             ? "bg-slate-950 border-white/10"

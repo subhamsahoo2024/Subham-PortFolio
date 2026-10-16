@@ -66,6 +66,7 @@ export default function ProjectsGrid({ theme }: ProjectsGridProps) {
   return (
     <section
       id="projects"
+      data-cursor-tip="View the project"
       className={`py-24 relative transition-colors duration-300 ${
         theme === "dark"
           ? "bg-slate-950 text-slate-100"
@@ -155,6 +156,7 @@ export default function ProjectsGrid({ theme }: ProjectsGridProps) {
                   transition: { duration: 0.2 },
                 }}
                 whileHover="hover"
+                data-cursor-tip={`View project: ${project.title}`}
                 className={`group p-6 sm:p-8 rounded-2xl border backdrop-blur-md flex flex-col justify-between transition-all duration-300 h-full relative ${
                   theme === "dark"
                     ? "bg-white/5 border-white/10"

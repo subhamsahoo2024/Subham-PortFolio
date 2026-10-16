@@ -29,6 +29,7 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
   return (
     <section
       id="about"
+      data-cursor-tip="about me"
       className={`py-24 relative border-t transition-colors duration-300 ${
         theme === "dark"
           ? "bg-slate-950/60 border-white/5"

@@ -61,6 +61,7 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
   return (
     <section
       id="hero"
+      data-cursor-tip="Hi, welcome to Subham's portfolio"
       className={`relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden transition-colors duration-300 ${
         theme === "dark"
           ? "bg-slate-950 text-slate-100"

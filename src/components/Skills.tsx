@@ -70,7 +70,7 @@ export default function Skills({ theme }: SkillsProps) {
   };
 
   return (
-    <section id="skills" className={`py-24 relative border-t transition-colors duration-300 ${
+    <section id="skills" data-cursor-tip="Technical skills & tech stack" className={`py-24 relative border-t transition-colors duration-300 ${
       theme === 'dark' ? 'bg-slate-950 border-white/5' : 'bg-slate-50 border-slate-200'
     }`}>
       {/* Background ambient light */}

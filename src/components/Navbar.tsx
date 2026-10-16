@@ -113,6 +113,7 @@ export default function Navbar({
           {navItems.map((item) => (
             <button
               key={item.id}
+              data-cursor-tip={`Go to ${item.label}`}
               onClick={() => handleScrollTo(item.id)}
               className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 cursor-pointer ${
                 activeSection === item.id
