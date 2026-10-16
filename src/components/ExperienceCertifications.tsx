@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'motion/react';
 import { Calendar, ShieldCheck, ChevronRight } from 'lucide-react';
 import { EXPERIENCE, CERTIFICATIONS } from '../data';
+import HackathonExperience from './HackathonExperience';
 
 interface ExperienceCertificationsProps {
   theme: 'light' | 'dark';
@@ -73,9 +74,11 @@ export default function ExperienceCertifications({ theme }: ExperienceCertificat
       }`}></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8">
-        
-        {/* Experience Header */}
-        <div className="mb-14">
+        {/* Hackathon Experience Section (Wins with Photos) */}
+        <HackathonExperience theme={theme} />
+
+        {/* Professional Experience Header */}
+        <div className={`pt-12 border-t mb-14 ${theme === 'dark' ? 'border-white/10' : 'border-slate-200'}`}>
           <div className="flex items-center gap-2 mb-3">
             <span className="w-8 h-[1px] bg-indigo-500"></span>
             <span className="font-mono text-xs uppercase tracking-widest text-indigo-500 font-semibold">Milestones</span>

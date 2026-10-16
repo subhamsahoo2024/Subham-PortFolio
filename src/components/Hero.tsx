@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Linkedin,
   Github,
@@ -7,8 +7,12 @@ import {
   ArrowRight,
   Download,
   FileText,
+  Maximize2,
+  X,
+  Sparkles,
 } from "lucide-react";
 import { PERSONAL_INFO } from "../data";
+import { downloadResumePdf } from "../utils/downloadResume";
 
 interface HeroProps {
   theme: "light" | "dark";
@@ -17,6 +21,8 @@ interface HeroProps {
 
 export default function Hero({ theme, onOpenCVModal }: HeroProps) {
   const [imgError, setImgError] = useState(false);
+  const [isPhotoEnlarged, setIsPhotoEnlarged] = useState(false);
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
   const profileImgUrl = "/images/profile%20photo.jpeg";
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,13 +44,8 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
     },
   };
 
-  const downloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/Subham_Sahoo_Resume.pdf";
-    link.download = "Subham_Sahoo_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const downloadCV = async () => {
+    await downloadResumePdf("Subham_Sahoo_Resume.pdf");
   };
 
   const handleScrollToProjects = () => {
@@ -247,35 +248,41 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
               className="absolute w-[75%] h-[75%] rounded-full border border-indigo-500/10 -z-5 bg-gradient-to-tr from-indigo-950/20 to-slate-900/10 backdrop-blur-3xl"
             />
 
-            {/* Primary Profile Silhouette Area */}
+            {/* Primary Profile Photo Area with Slow Enlarge & Radiant Glow */}
             <motion.div
+              onClick={() => setShowPhotoModal(true)}
+              animate={{
+                scale: isPhotoEnlarged ? 1.2 : 1,
+                boxShadow: isPhotoEnlarged
+                  ? theme === "dark"
+                    ? "0 0 70px rgba(99, 102, 241, 0.8), 0 0 35px rgba(16, 185, 129, 0.55), 0 0 120px rgba(99, 102, 241, 0.35)"
+                    : "0 0 60px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.3)"
+                  : theme === "dark"
+                    ? "0 0 20px rgba(99, 102, 241, 0.15)"
+                    : "0 0 20px rgba(99, 102, 241, 0.08)",
+                borderColor: isPhotoEnlarged ? "rgba(99, 102, 241, 0.9)" : theme === "dark" ? "rgba(255, 255, 255, 0.15)" : "rgba(226, 232, 240, 0.9)",
+              }}
               whileHover={{
-                scale: 1.12,
+                scale: 1.14,
                 boxShadow:
                   theme === "dark"
-                    ? "0 0 45px rgba(99, 102, 241, 0.55), 0 0 25px rgba(16, 185, 129, 0.3)"
-                    : "0 0 45px rgba(99, 102, 241, 0.4), 0 0 25px rgba(99, 102, 241, 0.15)",
-                borderColor: "rgba(99, 102, 241, 0.7)",
+                    ? "0 0 55px rgba(99, 102, 241, 0.7), 0 0 30px rgba(16, 185, 129, 0.45), 0 0 95px rgba(99, 102, 241, 0.3)"
+                    : "0 0 50px rgba(99, 102, 241, 0.5), 0 0 25px rgba(99, 102, 241, 0.25)",
+                borderColor: "rgba(99, 102, 241, 0.85)",
               }}
               whileTap={{
                 scale: 1.18,
-                boxShadow:
-                  theme === "dark"
-                    ? "0 0 60px rgba(99, 102, 241, 0.8), 0 0 35px rgba(16, 185, 129, 0.5)"
-                    : "0 0 60px rgba(99, 102, 241, 0.6), 0 0 35px rgba(99, 102, 241, 0.25)",
-                borderColor: "rgba(99, 102, 241, 0.9)",
               }}
               transition={{
-                type: "spring",
-                stiffness: 80,
-                damping: 14,
-                mass: 0.85,
+                duration: 0.7,
+                ease: [0.25, 1, 0.5, 1],
               }}
-              className={`absolute w-[68%] h-[68%] rounded-full border-2 flex items-center justify-center overflow-hidden cursor-pointer group select-none ${
+              className={`absolute w-[68%] h-[68%] rounded-full border-2 flex items-center justify-center overflow-hidden cursor-pointer group select-none z-10 ${
                 theme === "dark"
                   ? "bg-slate-900 border-white/10 shadow-[0_0_20px_rgba(99,102,241,0.15)]"
                   : "bg-white border-slate-200 shadow-[0_0_20px_rgba(99,102,241,0.08)]"
               }`}
+              title="Click to enlarge photo & view full profile headshot"
             >
               {/* Geometric matrix grid background inside avatar */}
               <div
@@ -420,6 +427,78 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
           className="w-1.5 h-6 rounded-full bg-gradient-to-b from-indigo-500 to-transparent"
         />
       </div>
+
+      {/* Enlarged Photo Modal with Slow Zoom & Glowing Backdrop */}
+      <AnimatePresence>
+        {showPhotoModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowPhotoModal(false)}
+              className="absolute inset-0 bg-slate-950/85 backdrop-blur-xl"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: 20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative max-w-lg w-full rounded-3xl overflow-hidden border p-3 z-10 transition-colors shadow-2xl ${
+                theme === "dark"
+                  ? "bg-slate-900 border-indigo-500/40 shadow-[0_0_80px_rgba(99,102,241,0.4)]"
+                  : "bg-white border-slate-200 shadow-[0_0_80px_rgba(99,102,241,0.25)]"
+              }`}
+            >
+              <div className="relative rounded-2xl overflow-hidden aspect-square bg-slate-950 flex items-center justify-center">
+                {/* Glowing radiant halo behind photo */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/30 via-transparent to-emerald-500/20 blur-xl pointer-events-none" />
+
+                <motion.img
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  src={profileImgUrl}
+                  alt={PERSONAL_INFO.name}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowPhotoModal(false)}
+                  className="absolute top-3 right-3 p-2 rounded-full bg-slate-950/70 hover:bg-slate-950 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg"
+                  title="Close Preview"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Photo Caption */}
+              <div className="p-4 text-center">
+                <h4
+                  className={`font-display font-bold text-lg ${
+                    theme === "dark" ? "text-white" : "text-slate-900"
+                  }`}
+                >
+                  {PERSONAL_INFO.name}
+                </h4>
+                <p className="text-xs font-mono text-indigo-500 mt-0.5">
+                  Building Scalable Full-Stack AI Solutions
+                </p>
+                <p
+                  className={`text-xs mt-2 font-light ${
+                    theme === "dark" ? "text-slate-400" : "text-slate-600"
+                  }`}
+                >
+                  Chennai Institute of Technology • B.E. Computer Science &amp;
+                  Engineering
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

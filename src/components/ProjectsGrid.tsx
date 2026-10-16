@@ -23,6 +23,7 @@ export default function ProjectsGrid({ theme }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const projectImageMap: Record<string, string> = {
+    peoplepay360: "/images/peoplepay360.png",
     guardianlink: "/images/Guardian-link.png",
     navx: "/images/navx.png",
     "smart-heart": "/images/smartheart.png",

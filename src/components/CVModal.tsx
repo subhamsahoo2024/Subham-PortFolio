@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, Download, Award, Briefcase, GraduationCap, Code, Mail, MapPin, Printer } from 'lucide-react';
+import { X, Download, Award, Briefcase, GraduationCap, Code, Mail, MapPin, Printer, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PERSONAL_INFO, PROJECTS, EXPERIENCE, SKILL_CATEGORIES } from '../data';
+import { downloadResumePdf } from '../utils/downloadResume';
 
 interface CVModalProps {
   isOpen: boolean;
@@ -12,13 +13,12 @@ interface CVModalProps {
 export default function CVModal({ isOpen, theme, onClose }: CVModalProps) {
   const [viewMode, setViewMode] = useState<'interactive' | 'pdf'>('interactive');
 
-  const downloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/Subham_Sahoo_Resume.pdf';
-    link.download = 'Subham_Sahoo_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const downloadCV = async () => {
+    await downloadResumePdf('Subham_Sahoo_Resume.pdf');
+  };
+
+  const openInNewTab = () => {
+    window.open('/Subham_Sahoo_Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   const triggerPrint = () => {
@@ -89,6 +89,15 @@ export default function CVModal({ isOpen, theme, onClose }: CVModalProps) {
               
               <div className="flex items-center gap-2">
                 <button
+                  onClick={openInNewTab}
+                  className={`p-2 rounded-lg transition-colors cursor-pointer ${
+                    theme === 'dark' ? 'bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950'
+                  }`}
+                  title="Open PDF in New Tab"
+                >
+                  <ExternalLink size={16} />
+                </button>
+                <button
                   onClick={triggerPrint}
                   className={`p-2 rounded-lg transition-colors cursor-pointer ${
                     theme === 'dark' ? 'bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950'
@@ -100,6 +109,7 @@ export default function CVModal({ isOpen, theme, onClose }: CVModalProps) {
                 <button
                   onClick={downloadCV}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md transition-colors cursor-pointer"
+                  title="Download Resume (PDF)"
                 >
                   <Download size={13} />
                   <span>Download</span>
@@ -117,12 +127,32 @@ export default function CVModal({ isOpen, theme, onClose }: CVModalProps) {
 
             {/* Scrollable CV Document */}
             {viewMode === 'pdf' ? (
-              <div className="flex-1 w-full bg-slate-950/20 relative flex flex-col items-center justify-center p-2 sm:p-4 min-h-[500px]">
+              <div className="flex-1 w-full bg-slate-950/20 relative flex flex-col items-center justify-between p-3 sm:p-5 min-h-[540px]">
                 <iframe
-                  src="/Subham_Sahoo_Resume.pdf"
-                  className="w-full h-full flex-1 min-h-[520px] border-0 rounded-xl shadow-lg bg-white"
+                  src="/Subham_Sahoo_Resume.pdf#toolbar=1"
+                  className="w-full flex-1 min-h-[500px] border-0 rounded-xl shadow-lg bg-white"
                   title="Subham Sahoo Resume PDF"
                 />
+                <div className="mt-3 w-full flex items-center justify-end gap-3 px-1">
+                  <button
+                    onClick={openInNewTab}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors cursor-pointer ${
+                      theme === 'dark'
+                        ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white'
+                        : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-slate-950 shadow-xs'
+                    }`}
+                  >
+                    <ExternalLink size={14} />
+                    <span>Open in New Tab</span>
+                  </button>
+                  <button
+                    onClick={downloadCV}
+                    className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md transition-colors cursor-pointer"
+                  >
+                    <Download size={14} />
+                    <span>Download PDF</span>
+                  </button>
+                </div>
               </div>
             ) : (
               <div className={`flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 print:p-0 transition-colors duration-300 ${
@@ -154,7 +184,7 @@ export default function CVModal({ isOpen, theme, onClose }: CVModalProps) {
                     <div className="flex items-center gap-2">
                       <Mail size={13} className="text-indigo-600" />
                       <a href={PERSONAL_INFO.socials.email} className="hover:text-indigo-500 hover:underline transition-colors font-medium">
-                        project4315@gmail.com
+                        {PERSONAL_INFO.socials.email.replace('mailto:', '')}
                       </a>
                     </div>
                     <div className="flex items-center gap-2">

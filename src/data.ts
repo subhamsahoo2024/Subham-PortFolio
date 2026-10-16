@@ -4,6 +4,7 @@ import {
   SkillCategory,
   Certification,
   SoftSkill,
+  HackathonWin,
 } from "./types";
 
 export const PERSONAL_INFO = {
@@ -39,6 +40,33 @@ Let's connect and grow together!`,
 };
 
 export const PROJECTS: Project[] = [
+  {
+    id: "peoplepay360",
+    title: "PeoplePay360",
+    description:
+      "A role-based, explainable HR and payroll management platform connecting employee records, contracts, attendance, leave, salary structures, payruns, and payslips in a unified interface — designed to detect, explain, and simulate payroll changes before payout.",
+    tags: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "PostgreSQL",
+      "shadcn/ui",
+      "Recharts",
+      "Framer Motion",
+      "Payroll Simulation",
+      "Biometrics",
+    ],
+    categories: ["Full-Stack", "AI"],
+    github: "https://github.com/subhamsahoo2024/PeoplePay360",
+    demo: "https://peoplepay360.vercel.app/",
+    features: [
+      "Engineered an automated Payroll Readiness Score engine checking payruns for missing bank details, expired/overlapping contracts, duplicate payslips, attendance gaps, and unusual salary spikes.",
+      "Built an Explainable Salary Difference engine breaking down all net salary variances (unpaid-leave deductions, approved overtime, custom adjustments) with line-by-line justification.",
+      "Developed an interactive Payroll Impact Simulator allowing HR & payroll managers to preview company-wide, department-level, and employee-level financial effects of proposed rule alterations before live execution.",
+      "Designed role-based access for 5 tiers (Employee Self-Service, HR Manager, Payroll User, Payroll Manager, Admin) featuring attendance exception detection, mock biometric verification, and live leave deduction estimates.",
+    ],
+  },
   {
     id: "guardianlink",
     title: "GuardianLink",
@@ -388,4 +416,92 @@ export const CERTIFICATIONS: Certification[] = [
     issuer: "IBM",
     date: "2026",
   },
+];
+
+export const HACKATHONS: HackathonWin[] = [
+  {
+    id: "odoo-2026",
+    title: "Odoo Hackathon 2026",
+    organizer: "Odoo India",
+    award: "Winner (1st Place)",
+    rankBadge: "🏆 1st Place / 8,000+ Participants",
+    prize: "₹1,70,000 Cash Prize",
+    date: "2026",
+    projectName: "PeoplePay360",
+    projectRepo: "https://github.com/subhamsahoo2024/PeoplePay360",
+    projectDemo: "https://peoplepay360.vercel.app/",
+    image: "/images/peoplepay360.png",
+    description:
+      "Ranked #1 out of over 8,000+ national participants in the Odoo Hackathon 2026. Engineered PeoplePay360, a role-based explainable HR and payroll management platform featuring an automated Payroll Readiness Score, explainable salary difference engine, and an interactive what-if payroll impact simulator.",
+    highlights: [
+      "Secured 1st Place nationwide and ₹1,70,000 cash prize among 8,000+ national developers.",
+      "Architected 3 core differentiating capabilities: Payroll Readiness Score, Explainable Salary Difference engine, and a Payroll Impact Simulator.",
+      "Engineered comprehensive role-based workflows across 5 distinct tiers (Employee Self-Service, HR Manager, Payroll User, Payroll Manager, Admin).",
+      "Designed an elegant visual identity inspired by Odoo's signature plum palette (#714B67) paired with responsive data tables and Recharts analytics."
+    ],
+    skills: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "shadcn/ui", "Recharts", "Framer Motion", "Payroll Architecture"]
+  },
+  {
+    id: "hackbells-3",
+    title: "HackBells 3.0",
+    organizer: "St. Joseph's Group of Institutions",
+    award: "Winner (1st Place)",
+    rankBadge: "🏆 1st Place / 200+ Teams",
+    prize: "₹1,00,000 Cash Prize",
+    date: "2025",
+    projectName: "Intervion AI",
+    projectRepo: "https://github.com/subhamsahoo2024/Intervion-ai",
+    projectDemo: "https://intervion-ai-sst.vercel.app/login",
+    image: "/images/hackathons/hackbells_win.jpg",
+    description:
+      "Grand Champion of an intensive 36-hour national engineering hackathon. Architected Intervion AI, an adaptive, industrial-grade career assessment and interview simulator leveraging local LLMs for real-time resume parsing, runtime coding execution sandboxes, and behavioral analysis.",
+    highlights: [
+      "Awarded 1st Place Grand Winner with ₹1,00,000 cash prize competing against 200+ elite teams.",
+      "Engineered an adaptive prompt-chaining framework using LLaMa 3.1 & Mistral to isolate resume data and dynamically generate tailored, non-linear technical interview questions.",
+      "Built a secure, sandboxed code execution runtime verifying user solutions against algorithmic time-complexity parameters."
+    ],
+    skills: ["React", "TypeScript", "Python", "LLaMa 3.1", "Mistral", "NLP", "Prompt Engineering"]
+  },
+  {
+    id: "gdg-techsprint",
+    title: "GDG TechSprint Hackathon",
+    organizer: "Google Developer Groups",
+    award: "Winner (1st Place)",
+    rankBadge: "🏆 1st Place Winner",
+    prize: "Google Products worth ₹60,000",
+    date: "2025",
+    projectName: "NavX",
+    projectRepo: "https://github.com/subhamsahoo2024/NavX-indoor-nav",
+    projectDemo: "https://cit-maps.vercel.app/",
+    image: "/images/hackathons/gdg_win.jpg",
+    description:
+      "Secured First Place at the Google Developer Groups TechSprint Hackathon with NavX — an intelligent, map-digitizing navigation system that converts physical layout schematics into interactive multi-floor pathfinding graphs with localized natural language support.",
+    highlights: [
+      "Awarded 1st Place by Google developer experts, receiving Google hardware and devices worth ₹60,000.",
+      "Engineered a custom graph abstraction layer capable of modeling complex multi-floor vertical transitions, executing Dijkstra’s Algorithm for real-time routing.",
+      "Integrated context-aware AI concierge via Gemini API parsing ambiguous natural language spatial queries into structured path coordinates."
+    ],
+    skills: ["Next.js", "Gemini API", "MongoDB", "Graph Theory", "TypeScript", "Tailwind CSS"]
+  },
+  {
+    id: "citil-sdg",
+    title: "CITIL SDG Hackathon",
+    organizer: "Chennai Institute of Technology Innovation Labs",
+    award: "Winner / Runner-Up",
+    rankBadge: "🥈 2nd Place / SDG Innovation Award",
+    prize: "₹25,000 Cash Prize",
+    date: "2025",
+    projectName: "INNOVEX (Campus SDG Accelerator)",
+    projectRepo: "https://github.com/subhamsahoo2024/campus-connect-sdg",
+    projectDemo: "https://campus-connect-murex-eight.vercel.app/",
+    image: "/images/hackathons/citil_win.jpg",
+    description:
+      "Recognized for high-impact sustainability technology. Built INNOVEX, an AI-powered enterprise accelerator platform designed to orchestrate semantic mentor-investor matchmaking and real-time sustainability metrics.",
+    highlights: [
+      "Secured top honors and ₹25,000 cash prize for innovative application of AI towards UN SDG goals.",
+      "Architected sub-second semantic profile matchmaking using Supabase pgvector and Hugging Face embeddings.",
+      "Engineered asynchronous multi-LLM orchestration using Groq for real-time telemetry analysis."
+    ],
+    skills: ["Next.js", "Supabase", "pgvector", "Groq", "Llama 3.3 70B", "Recharts"]
+  }
 ];

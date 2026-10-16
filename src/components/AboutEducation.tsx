@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { GraduationCap, ArrowUpRight, Brain } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { GraduationCap, ArrowUpRight, Brain, Maximize2, X } from "lucide-react";
 import { PERSONAL_INFO } from "../data";
 
 interface AboutEducationProps {
@@ -7,6 +8,7 @@ interface AboutEducationProps {
 }
 
 export default function AboutEducation({ theme }: AboutEducationProps) {
+  const [showEnlargedPhoto, setShowEnlargedPhoto] = useState(false);
   const aboutImageUrl = "/images/about%20photo.jpeg";
   const cardHoverVariants = {
     hover: {
@@ -108,16 +110,28 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
               </motion.div>
             </div>
 
-            {/* Right Column: Square Image Placeholder (5 Columns) */}
+            {/* Right Column: Photo Card with Slow Enlarge & Radiant Glow (5 Columns) */}
             <div className="lg:col-span-5 flex items-start justify-center">
               <motion.div
-                whileHover="hover"
-                variants={cardHoverVariants}
-                className={`w-full max-w-[420px] aspect-square rounded-2xl border backdrop-blur-md overflow-hidden relative transition-all duration-300 ${
+                onClick={() => setShowEnlargedPhoto(true)}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow:
+                    theme === "dark"
+                      ? "0 0 50px rgba(99, 102, 241, 0.6), 0 0 25px rgba(16, 185, 129, 0.4), 0 0 80px rgba(99, 102, 241, 0.25)"
+                      : "0 0 45px rgba(99, 102, 241, 0.4), 0 0 20px rgba(99, 102, 241, 0.2)",
+                  borderColor: "rgba(99, 102, 241, 0.8)",
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.25, 1, 0.5, 1],
+                }}
+                className={`w-full max-w-[420px] aspect-square rounded-2xl border backdrop-blur-md overflow-hidden relative cursor-pointer group select-none shadow-lg ${
                   theme === "dark"
-                    ? "bg-white/5 border-white/10"
-                    : "bg-slate-50 border-slate-200/80 shadow-sm shadow-slate-100/50"
+                    ? "bg-slate-900 border-white/10"
+                    : "bg-slate-50 border-slate-200/80 shadow-slate-100/50"
                 }`}
+                title="Click photo to enlarge & view full headshot"
               >
                 <div
                   className={`absolute inset-0 bg-[linear-gradient(to_right,var(--square-grid)_1px,transparent_1px),linear-gradient(to_bottom,var(--square-grid)_1px,transparent_1px)] bg-[size:1.25rem_1.25rem] opacity-50`}
@@ -129,15 +143,21 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
                   }
                 ></div>
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${theme === "dark" ? "from-indigo-500/10 via-transparent to-emerald-500/10" : "from-indigo-100 via-transparent to-emerald-100"}`}
+                  className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-700 ${theme === "dark" ? "from-indigo-500/10 via-transparent to-emerald-500/10 group-hover:from-indigo-500/25" : "from-indigo-100 via-transparent to-emerald-100 group-hover:from-indigo-200"}`}
                 />
-                <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-8">
-                  <div className="relative w-full h-full min-h-[260px] flex items-center justify-center">
-                    <img
-                      src={aboutImageUrl}
-                      alt="About Subham Sahoo"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
+                <div className="relative z-10 h-full w-full overflow-hidden">
+                  <motion.img
+                    src={aboutImageUrl}
+                    alt="About Subham Sahoo"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-108"
+                  />
+                  {/* Glowing Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-700" />
+                  
+                  {/* Click to expand pill */}
+                  <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg backdrop-blur-md bg-slate-950/70 border border-white/20 text-white text-[11px] font-mono group-hover:bg-indigo-600 transition-colors">
+                    <Maximize2 size={12} />
+                    <span>Click to Enlarge</span>
                   </div>
                 </div>
               </motion.div>
@@ -256,6 +276,77 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
           </motion.div>
         </div>
       </div>
+
+      {/* Enlarged Photo Modal with Slow Zoom & Glowing Backdrop */}
+      <AnimatePresence>
+        {showEnlargedPhoto && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowEnlargedPhoto(false)}
+              className="absolute inset-0 bg-slate-950/85 backdrop-blur-xl"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.85, y: 20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative max-w-lg w-full rounded-3xl overflow-hidden border p-3 z-10 transition-colors shadow-2xl ${
+                theme === "dark"
+                  ? "bg-slate-900 border-indigo-500/40 shadow-[0_0_80px_rgba(99,102,241,0.4)]"
+                  : "bg-white border-slate-200 shadow-[0_0_80px_rgba(99,102,241,0.25)]"
+              }`}
+            >
+              <div className="relative rounded-2xl overflow-hidden aspect-square bg-slate-950 flex items-center justify-center">
+                {/* Glowing radiant halo behind photo */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600/30 via-transparent to-emerald-500/20 blur-xl pointer-events-none" />
+
+                <motion.img
+                  initial={{ scale: 0.95 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  src={aboutImageUrl}
+                  alt={PERSONAL_INFO.name}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowEnlargedPhoto(false)}
+                  className="absolute top-3 right-3 p-2 rounded-full bg-slate-950/70 hover:bg-slate-950 text-white backdrop-blur-md border border-white/20 transition-all cursor-pointer shadow-lg"
+                  title="Close Preview"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Photo Caption */}
+              <div className="p-4 text-center">
+                <h4
+                  className={`font-display font-bold text-lg ${
+                    theme === "dark" ? "text-white" : "text-slate-900"
+                  }`}
+                >
+                  {PERSONAL_INFO.name}
+                </h4>
+                <p className="text-xs font-mono text-emerald-500 mt-0.5">
+                  About &amp; Academic Background
+                </p>
+                <p
+                  className={`text-xs mt-2 font-light ${
+                    theme === "dark" ? "text-slate-400" : "text-slate-600"
+                  }`}
+                >
+                  Chennai Institute of Technology • 9.2/10 CGPA
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

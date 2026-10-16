@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Download, FileText, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { downloadResumePdf } from "../utils/downloadResume";
 
 interface NavbarProps {
   theme: "light" | "dark";
@@ -63,53 +64,8 @@ export default function Navbar({
     }
   };
 
-  const downloadCV = () => {
-    // Generate simple programmatic resume payload to let the browser download it.
-    // In a real scenario, this is a PDF, we can use a data URL or a mock text resume.
-    const cvContent = `
-========================================
-SUBHAM SAHOO - PORTFOLIO RESUME
-========================================
-Title: Building Scalable Full-Stack AI Solutions
-Email: subhamsahoo23415@gmail.com
-Phone: +91 8072256919
-Education: Chennai Institute of Technology, B.E. CSE (2024 - 2028) | CGPA: 9.2/10
-
-EXPERIENCE:
-1. Influenco (May 2026 - June 2026) | Frontend Developer Intern
-   - Architected high-fidelity web dashboards with rich interactive tables.
-   - Designed responsive, component-driven layouts with Tailwind & Framer Motion.
-2. Dynx Business Solutions (Nov 2025) | Full Stack Web Developer Intern
-   - Built clean RESTful APIs in Node.js/Express to handle core database queries.
-
-TECHNICAL SKILLS:
-- Languages: C++, Java, Python, TypeScript, JavaScript
-- Frontend: React, Next.js, Tailwind CSS, HTML5/CSS3, Framer Motion
-- Backend: Node.js, Express, REST APIs, FastAPI
-- Databases: MongoDB, Supabase, MySQL, Firebase
-
-PROJECTS:
-- GuardianLink: Next.js, Firebase, LLaMa 4, Leaflet.js
-- NavX: Next.js, MongoDB, Gemini API, Canvas API
-- Smart Heart: FastAPI, Python, PyTorch, React, Recharts
-- Intervion AI: React, TypeScript, LLaMa 3.1, Node.js
-
-CERTIFICATIONS:
-- Google AIML Certification
-- NPTEL Python Data Analytics
-- NPTEL Internet of Things (IoT)
-- AWS Cloud Practitioner
-- IBM AI Fundamentals
-========================================
-    `;
-    const blob = new Blob([cvContent.trim()], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "Subham_Sahoo_Resume.txt";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const downloadCV = async () => {
+    await downloadResumePdf("Subham_Sahoo_Resume.pdf");
   };
 
   return (

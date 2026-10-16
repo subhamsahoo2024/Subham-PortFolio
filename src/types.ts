@@ -38,3 +38,20 @@ export interface SoftSkill {
   metric: string;
   description: string;
 }
+
+export interface HackathonWin {
+  id: string;
+  title: string;
+  organizer: string;
+  award: string;
+  rankBadge: string;
+  prize: string;
+  date: string;
+  projectName: string;
+  projectRepo?: string;
+  projectDemo?: string;
+  image: string;
+  description: string;
+  highlights: string[];
+  skills: string[];
+}
