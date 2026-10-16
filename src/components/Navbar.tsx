@@ -178,7 +178,7 @@ export default function Navbar({
               size={15}
               className="group-hover:translate-y-[1px] transition-transform duration-200"
             />
-            <span>Download CV</span>
+            <span>Download Resume</span>
           </button>
         </div>
 
@@ -283,7 +283,7 @@ export default function Navbar({
                   className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-lg bg-indigo-600 text-white active:scale-98 cursor-pointer"
                 >
                   <Download size={15} />
-                  <span>Download CV</span>
+                  <span>Download Resume</span>
                 </button>
               </div>
             </div>

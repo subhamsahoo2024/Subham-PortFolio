@@ -161,7 +161,7 @@ export default function Hero({ theme, onOpenCVModal }: HeroProps) {
                   theme === "dark" ? "text-slate-400" : "text-slate-500"
                 }
               />
-              <span>Download CV (PDF)</span>
+              <span>Download Resume (PDF)</span>
             </button>
           </motion.div>
 

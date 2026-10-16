@@ -84,7 +84,7 @@ export default function CursorAvatar({ theme }: CursorAvatarProps) {
         if (interactiveEl.tagName === "BUTTON") {
           const btnText = interactiveEl.textContent?.trim() || "";
           if (btnText.toLowerCase().includes("cv") || btnText.toLowerCase().includes("resume")) {
-            setCursorTip("View & Download CV");
+            setCursorTip("View & Download Resume");
             return;
           }
           if (btnText.toLowerCase().includes("add")) {
