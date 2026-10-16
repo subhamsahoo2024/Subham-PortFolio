@@ -64,8 +64,8 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
         {/* About + Image Top Row, Full-Width Education Row */}
         <div className="flex flex-col gap-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left Column: About Me (7 Columns) */}
-            <div className="lg:col-span-7 flex flex-col gap-8">
+            {/* Left Column: About Me (7 Columns) - On mobile, displayed after the photo */}
+            <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-8">
               <motion.div
                 whileHover="hover"
                 variants={cardHoverVariants}
@@ -111,8 +111,8 @@ export default function AboutEducation({ theme }: AboutEducationProps) {
               </motion.div>
             </div>
 
-            {/* Right Column: Photo Card with Slow Enlarge & Radiant Glow (5 Columns) */}
-            <div className="lg:col-span-5 flex items-start justify-center">
+            {/* Right Column: Photo Card with Slow Enlarge & Radiant Glow (5 Columns) - On mobile, displayed first */}
+            <div className="order-1 lg:order-2 lg:col-span-5 flex items-start justify-center">
               <motion.div
                 onClick={() => setShowEnlargedPhoto(true)}
                 whileHover={{

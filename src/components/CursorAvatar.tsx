@@ -156,17 +156,26 @@ export default function CursorAvatar({ theme }: CursorAvatarProps) {
     let animationFrameId: number;
 
     const animate = () => {
-      // Lerp ball position towards cursor with gentle trailing elasticity
-      const ease = 0.18;
-      const dx = targetRef.current.x - posRef.current.x;
-      const dy = targetRef.current.y - posRef.current.y;
+      // Float comfortably above the cursor pointer (offset by -34px on Y)
+      // If close to the very top edge (< 48px), flip downward (+32px) so it stays visible
+      const isNearTopEdge = targetRef.current.y < 48;
+      const offsetY = isNearTopEdge ? 32 : -34;
+      const desiredX = targetRef.current.x;
+      const desiredY = targetRef.current.y + offsetY;
+
+      // Lerp ball position towards desired floating position with gentle trailing elasticity
+      const ease = 0.2;
+      const dx = desiredX - posRef.current.x;
+      const dy = desiredY - posRef.current.y;
 
       posRef.current.x += dx * ease;
       posRef.current.y += dy * ease;
 
-      // Calculate subtle eye looking direction based on velocity
-      const lookDist = Math.min(3, Math.sqrt(dx * dx + dy * dy) * 0.15);
-      const angle = Math.atan2(dy, dx);
+      // Avatar eyes naturally look down towards where the cursor is clicking / moving
+      const toCursorX = targetRef.current.x - posRef.current.x;
+      const toCursorY = targetRef.current.y - posRef.current.y;
+      const angle = Math.atan2(toCursorY, toCursorX);
+      const lookDist = Math.min(2.5, Math.max(1, Math.sqrt(dx * dx + dy * dy) * 0.12));
       const lookX = Math.cos(angle) * lookDist;
       const lookY = Math.sin(angle) * lookDist;
 
