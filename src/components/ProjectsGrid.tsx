@@ -22,18 +22,6 @@ interface ProjectsGridProps {
 export default function ProjectsGrid({ theme }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const projectImageMap: Record<string, string> = {
-    peoplepay360: "/images/peoplepay360.png",
-    guardianlink: "/images/Guardian-link.png",
-    navx: "/images/navx.png",
-    "smart-heart": "/images/smartheart.png",
-    "intervion-ai": "/images/intervionAI.png",
-    innovex: "/images/Innovex.png",
-    blocktracked: "/images/blocktracked.png",
-    "think-book": "/images/thinkbook.png",
-    "mini-games-hub": "/images/mini-game-hub.png",
-  };
-
   const categories = ["All", "AI", "Full-Stack", "Web3"];
 
   const filteredProjects = PROJECTS.filter((project) => {
@@ -182,11 +170,13 @@ export default function ProjectsGrid({ theme }: ProjectsGridProps) {
                         : "bg-slate-50 border-slate-200"
                     }`}
                   >
-                    <img
-                      src={projectImageMap[project.id]}
-                      alt={`${project.title} screenshot`}
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
+                    {project.image && (
+                      <img
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-transparent" />
                     <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-slate-950/70 px-2.5 py-1 text-[9px] font-mono text-slate-200 backdrop-blur-md">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />

@@ -2,5 +2,5 @@
   "name": "Subham Sahoo Portfolio",
   "description": "Elite developer portfolio website for Subham Sahoo, building scalable full-stack AI solutions.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }

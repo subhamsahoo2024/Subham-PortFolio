@@ -25,7 +25,7 @@ Let's connect and grow together!`,
     institution: "Chennai Institute of Technology",
     degree: "Bachelor of Engineering in Computer Science and Engineering",
     duration: "2024 - 2028",
-    grade: "9.2/10 CGPA",
+    grade: "8.95/10 CGPA",
     highlights: [
       "Focus on Advanced Data Structures & Algorithms",
       "Member of the AI/ML , Web Development and Open Source Club",
@@ -42,6 +42,7 @@ Let's connect and grow together!`,
 export const PROJECTS: Project[] = [
   {
     id: "navx",
+    image: "/images/navx.png",
     title: "NavX",
     description:
       "An intelligent, map-digitizing navigation system that converts physical layout schematics into interactive multi-floor pathfinding graphs with localized natural language support.",
@@ -64,6 +65,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "intervion-ai",
+    image: "/images/intervionAI.png",
     title: "Intervion AI",
     description:
       "An adaptive, industrial-grade career assessment simulator leveraging local large language models to construct real-time resume parsing, runtime coding execution sandboxes, and behavioral analysis.",
@@ -86,7 +88,35 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    id: "idearegen",
+    image: "/images/idearegen.png",
+    title: "IdeaReGen",
+    description:
+      "A privacy-first, local-hosted autonomous copilot that synthesizes technical development logs, architecture diagrams, and literature into publication-ready research papers and engineering reports.",
+    tags: [
+      "FastAPI",
+      "Tauri",
+      "React",
+      "ChromaDB",
+      "SQLite",
+      "Ollama",
+      "gemini model",
+      "gpt-oss-20b",
+      "Tectonic",
+      "Pandoc",
+    ],
+    categories: ["AI", "Desktop", "Full-Stack"],
+    github: "https://github.com/subhamsahoo2024/IdeaReGen",
+    demo: "",
+    features: [
+      "Architected a section-by-section Map-Reduce synthesis engine aggregating multi-week SQLite conversation logs, codebases, and literature caches into publication-grade papers and engineering reports.",
+      "Engineered an offline sequential model orchestrator , seamlessly alternating Text model and vision inference model with dynamic cloud model fallbacks using gemini and groq apis.",
+      "Implemented an embedded dual-compilation pipeline integrating Tectonic LaTeX and Pandoc inside a native Tauri desktop container for deterministic, one-click PDF and Word (.docx) export.",
+    ],
+  },
+  {
     id: "smart-heart",
+    image: "/images/smartheart.png",
     title: "Smart Heart",
     description:
       "A high-throughput clinical analytical engine combining ECG and PCG deep learning architectures for automated cardiovascular risk forecasting and explainable visual medical triage.",
@@ -110,6 +140,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "innovex",
+    image: "/images/Innovex.png",
     title: "INNOVEX",
     description:
       "An AI-driven, gamified enterprise accelerator platform for universities designed to orchestrate semantic mentor-investor matchmaking, real-time ecosystem telemetry, and agile startup tracking.",
@@ -133,6 +164,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "peoplepay360",
+    image: "/images/peoplepay360.png",
     title: "PeoplePay360",
     description:
       "A role-based, explainable HR and payroll management platform connecting employee records, contracts, attendance, leave, salary structures, payruns, and payslips in a unified interface — designed to detect, explain, and simulate payroll changes before payout.",
@@ -150,7 +182,7 @@ export const PROJECTS: Project[] = [
     ],
     categories: ["Full-Stack"],
     github: "https://github.com/subhamsahoo2024/PeoplePay360",
-    demo: "",
+    demo: "https://people-pay360-pi.vercel.app/",
     features: [
       "Engineered an automated Payroll Readiness Score engine checking payruns for missing bank details, expired/overlapping contracts, duplicate payslips, attendance gaps, and unusual salary spikes.",
       "Built an Explainable Salary Difference engine breaking down all net salary variances (unpaid-leave deductions, approved overtime, custom adjustments) with line-by-line justification.",
@@ -160,6 +192,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "guardianlink",
+    image: "/images/Guardian-link.png",
     title: "GuardianLink",
     description:
       "A low-latency, cross-platform emergency response Progressive Web App (PWA) providing real-time AI hazard triage and dynamic indoor/outdoor geospatial evacuation pathfinding during active crises.",
@@ -183,6 +216,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "blocktracked",
+    image: "/images/blocktracked.png",
     title: "BlockTrackEd",
     description:
       "A multi-portal Web3 decentralized application (dApp) leveraging immutable smart contracts to eliminate financial intermediaries and secure transparent scholarship allocation workflows.",
@@ -207,6 +241,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "think-book",
+    image: "/images/thinkbook.png",
     title: "Think-book",
     description:
       "A modular, high-performance React note management application featuring full-text lookahead indexing, offline-first persistence architectures, and secure tokenized authentication loops.",
@@ -229,6 +264,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "mini-games-hub",
+    image: "/images/mini-game-hub.png",
     title: "Mini Games Hub",
     description:
       "A micro-architected Node.js/Express server optimized for high-speed delivery of raw browser-native client assets and low-overhead browser application deployment.",
