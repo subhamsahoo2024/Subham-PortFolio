@@ -22,7 +22,7 @@ interface ProjectsGridProps {
 export default function ProjectsGrid({ theme }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const categories = ["All", "AI", "Full-Stack", "Web3"];
+  const categories = ["All", "AI", "Full-Stack", "Web3", "Desktop"];
 
   const filteredProjects = PROJECTS.filter((project) => {
     if (activeCategory === "All") return true;

@@ -48,20 +48,27 @@ export default function Navbar({
   }, []);
 
   const handleScrollTo = (id: string) => {
-    setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+      const offsetPosition =
+        element.getBoundingClientRect().top + window.scrollY - offset;
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      if (isMobile) {
+        const root = document.documentElement;
+        const previousScrollBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = "auto";
+        window.scrollTo({ top: offsetPosition, behavior: "auto" });
+        root.style.scrollBehavior = previousScrollBehavior;
+      } else {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
+    setIsOpen(false);
   };
 
   const downloadCV = async () => {
@@ -212,6 +219,8 @@ export default function Navbar({
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             className={`p-2 rounded-lg border active:scale-95 cursor-pointer ${
               theme === "dark"
                 ? "bg-white/5 border-white/10 text-slate-300"

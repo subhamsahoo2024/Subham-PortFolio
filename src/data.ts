@@ -465,7 +465,7 @@ export const HACKATHONS: HackathonWin[] = [
     date: "2026",
     projectName: "PeoplePay360",
     projectRepo: "https://github.com/subhamsahoo2024/PeoplePay360",
-    projectDemo: "",
+    projectDemo: "https://people-pay360-pi.vercel.app/",
     image: "/images/hackathons/odoo_win.jpeg",
     description:
       "Ranked #1 out of over 8,000+ national participants in the Odoo Hackathon 2026. Engineered PeoplePay360, a role-based explainable HR and payroll management platform featuring an automated Payroll Readiness Score, explainable salary difference engine, and an interactive what-if payroll impact simulator.",
